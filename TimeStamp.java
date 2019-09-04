@@ -1,8 +1,8 @@
 public class TimeStamp{
-	WindDetails [][] windDetails;
+	private WindDetails [][] windDetails;
 
 	TimeStamp(int xLength, int yLength)
 	{
-		windDetails = new [xLength][yLength] WindDetails();
+		windDetails = new  WindDetails [xLength][yLength];
 	}
 }

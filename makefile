@@ -17,13 +17,13 @@ vpath %.class $(BINDIR)
 
 #default rule - will be invoked by make
 
-all: PowerObject.class \
-				AVLTree.class\
-				BinarySearchTree.class\
-				PowerAVLApp.class \
-				PowerBSTApp.class \
-				test.class\
+all: WindDetails.class \
+	 TimeStamp.class \
+	 Layer.class \
+	 CloudCalculator.class 
 
+run:
+	cd bin && java CloudCalculator simplesample_input.txt && cd ..		
 				
 # Rules for generating documentation
 doc:

@@ -1,3 +1,8 @@
 public class Layer{
-	TimeStamp [] timestamps;
+	private TimeStamp [] timestamps;
+
+	public Layer (int numTimestamps){
+		this.timestamps = new TimeStamp[numTimestamps];
+	}
+
 }
