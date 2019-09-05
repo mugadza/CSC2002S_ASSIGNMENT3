@@ -1,5 +1,5 @@
 public class TimeStamp{
-	private WindDetails[][] windDetails;
+	public  WindDetails[][] windDetails;
 
 	TimeStamp(int xLength, int yLength)
 	{

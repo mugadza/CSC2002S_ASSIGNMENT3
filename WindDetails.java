@@ -1,8 +1,8 @@
 public class WindDetails{
-	private float xAdvection;
-	private float yAdvection;
-	private float convection;
-	private int cloudClassification;
+	public float xAdvection;
+	public float yAdvection;
+	public float convection;
+	public int cloudClassification;
 
 	public WindDetails(float xAdvection, float yAdvection, float convection){
 		this.xAdvection = xAdvection;
