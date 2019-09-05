@@ -1,5 +1,5 @@
 public class TimeStamp{
-	public  WindDetails[][] windDetails;
+	private WindDetails[][] windDetails;
 
 	TimeStamp(int xLength, int yLength)
 	{
@@ -13,11 +13,26 @@ public class TimeStamp{
 		this.windDetails[xIndex][yIndex] = windDetail;
 	}
 
+	public int getYLength(){
+		if (windDetails.length > 0){
+			return this.windDetails[0].length;
+		}
+		return 0;
+	}
+
+	public int getXLength(){
+		return this.windDetails.length;
+	}
+
+	public WindDetails at(int x, int y){
+		return windDetails[x][y];
+	}
+	
 	@Override
 	public String toString(){
 		String timeStampString = "";
 		for(int x = 0; x < this.windDetails.length; x++){
-			for(int y = 0; y < this.windDetails.length; y++){
+			for(int y = 0; y < this.windDetails[0].length; y++){
 				timeStampString += this.windDetails[x][y].toString() + " | ";
 			}
 			timeStampString += "\n";

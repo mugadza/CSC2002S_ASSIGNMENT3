@@ -1,5 +1,5 @@
 public class Layer{
-	public TimeStamp [] timestamps;
+	private TimeStamp [] timestamps;
 
 	public Layer (int numTimestamps){
 		this.timestamps = new TimeStamp[numTimestamps];
@@ -10,6 +10,37 @@ public class Layer{
 
 		timestamps[index] = timeStamp;
 	}
+
+	public float getXAverage(){
+		WindDetails sumWindDetails = new WindDetails(0,0,0);
+		float total = 0;
+
+		for (int t = 0; t < this.timestamps.length; t++){
+			for(int x = 0; x < this.timestamps[t].getXLength(); x++){
+				for(int y = 0; y < this.timestamps[t].getYLength(); y++){
+					sumWindDetails.addWindDetails(this.timestamps[t].at(x, y));
+					total += 1;
+				}
+			}
+		}
+		return sumWindDetails.xAdvection/total;
+	}
+
+	public float getYAverage(){
+		WindDetails sumWindDetails = new WindDetails(0,0,0);
+		float total = 0;
+
+		for (int t = 0; t < this.timestamps.length; t++){
+			for(int x = 0; x < this.timestamps[t].getXLength(); x++){
+				for(int y = 0; y < this.timestamps[t].getYLength(); y++){
+					sumWindDetails.addWindDetails(this.timestamps[t].at(x, y));
+					total += 1;
+				}
+			}
+		}
+		return sumWindDetails.yAdvection/total;
+	}
+
 
 	@Override
 	public String toString(){
