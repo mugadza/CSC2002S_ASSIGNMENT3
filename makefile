@@ -23,7 +23,7 @@ all: WindDetails.class \
 	 CloudCalculator.class 
 
 run:
-	cd bin && java CloudCalculator simplesample_input.txt && cd ..		
+	cd bin && java CloudCalculator ../simplesample_input.txt && cd ..		
 				
 # Rules for generating documentation
 doc:

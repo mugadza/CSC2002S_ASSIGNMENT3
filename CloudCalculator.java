@@ -12,13 +12,16 @@ public class CloudCalculator{
 		System.out.println("----------- Creating a layer -----------");
 		Layer cloudLayer = readData(args[0]);
 		System.out.println("----------- Layer was created successfully -----------");
+		System.out.println(cloudLayer);
 	
 	}
 
 	static Layer readData(String fileName){ 
-		Layer layer;
+		Layer layer = null;
 		try{ 
 			Scanner sc = new Scanner(new File(fileName));
+
+			// Read layer details i.e line 1
 			int dimt = sc.nextInt();
 			int dimx = sc.nextInt(); 
 			int dimy = sc.nextInt();
@@ -27,7 +30,23 @@ public class CloudCalculator{
 
 			for (int t = 0; t < dimt; t++){
 				if(sc.hasNext()==true){
-					
+					TimeStamp timeStamp = new TimeStamp(dimx, dimy);
+					// Read a wind details
+					for(int x = 0; x < dimx; x++){
+						for(int y = 0; y < dimy; y++){
+							float xAdvection = Float.parseFloat(sc.next());
+							float yAdvection = Float.parseFloat(sc.next());
+							float convection = Float.parseFloat(sc.next());
+
+							WindDetails windDetails = new WindDetails(xAdvection, yAdvection, convection);
+
+							// add this wind detail to the time stamp
+							timeStamp.addWindDetail(x, y, windDetails);
+						}
+					}
+
+					// add the constructed time stamp to the layer
+					layer.addTimeStamp(t, timeStamp);
 				}
 				else{
 					// something went terribly wrong

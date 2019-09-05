@@ -10,4 +10,8 @@ public class WindDetails{
 		this.convection = convection;
 	}
 
+	@Override
+	public String toString(){
+		return "xAdvection: " + xAdvection + ", yAdvection: " + yAdvection + ", convection: " + convection;
+	}
 }
