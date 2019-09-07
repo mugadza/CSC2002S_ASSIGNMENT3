@@ -11,6 +11,15 @@ public class Layer{
 		timestamps[index] = timeStamp;
 	}
 
+	public TimeStamp at(int x){
+			return timestamps[x];
+		
+	}
+
+	public int layerLength(){
+		return timestamps.length;
+	}
+
 	public float getXAverage(){
 		WindDetails sumWindDetails = new WindDetails(0,0,0);
 		float total = 0;

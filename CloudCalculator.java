@@ -14,9 +14,19 @@ public class CloudCalculator{
 		
 		
 		System.out.println("----------- Layer was created successfully -----------");
+
 		if(cloudLayer != null){
-		average(cloudLayer);
+			average(cloudLayer);
 		}
+
+		for(int x = 0; x < cloudLayer.layerLength(); x++){
+			cloudLayer.at(x).classifier();
+
+		}
+		System.out.print(cloudLayer.layerLength() );
+		System.out.print(cloudLayer.at(0).getYLength() );
+		System.out.println(cloudLayer.at(0).getXLength() );
+
 		System.out.println(cloudLayer);
 	
 	}
@@ -76,14 +86,12 @@ public class CloudCalculator{
 
 	static void average(Layer layer){
 		float tempx = layer.getXAverage();
-		System.out.println(String.format("%.6f",tempx));
+		System.out.print(String.format("%.6f",tempx));
 		float tempy = layer.getYAverage();
-		System.out.println(String.format("%.6f",tempy));
+		System.out.println(String.format(" %.6f",tempy));
 
 	}
 
-	// static float meanOfNeighbours(Layer layer, WindDetails windDetails){
-		
-	// }
+	
 
 }

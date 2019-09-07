@@ -8,6 +8,7 @@ public class WindDetails{
 		this.xAdvection = xAdvection;
 		this.yAdvection = yAdvection;
 		this.convection = convection;
+		this.cloudClassification = 0;
 	}
 
 	public WindDetails addWindDetails(WindDetails other){
@@ -19,8 +20,13 @@ public class WindDetails{
 
 	}
 
+	public void setCloudClassification(int cloudClassification){
+		this.cloudClassification = cloudClassification;
+	}
+
 	@Override
 	public String toString(){
-		return "xAdvection: " + xAdvection + ", yAdvection: " + yAdvection + ", convection: " + convection;
+		// return "xAdvection: " + xAdvection + ", yAdvection: " + yAdvection + ", convection: " + convection + ", cloudClassification: " + cloudClassification ;
+		return Integer.toString(cloudClassification);
 	}
 }
