@@ -13,41 +13,41 @@ public class Layer{
 
 	public TimeStamp at(int x){
 			return timestamps[x];
-		
+
 	}
 
 	public int layerLength(){
 		return timestamps.length;
 	}
 
+	public int layerSize(){
+		return timestamps.length  * timestamps[0].getXLength() * timestamps[0].getYLength();
+	}
+
 	public float getXAverage(){
 		WindDetails sumWindDetails = new WindDetails(0,0,0);
-		float total = 0;
 
 		for (int t = 0; t < this.timestamps.length; t++){
 			for(int x = 0; x < this.timestamps[t].getXLength(); x++){
 				for(int y = 0; y < this.timestamps[t].getYLength(); y++){
 					sumWindDetails.addWindDetails(this.timestamps[t].at(x, y));
-					total += 1;
 				}
 			}
 		}
-		return sumWindDetails.xAdvection/total;
+		return sumWindDetails.xAdvection/layerSize();
 	}
 
 	public float getYAverage(){
 		WindDetails sumWindDetails = new WindDetails(0,0,0);
-		float total = 0;
 
 		for (int t = 0; t < this.timestamps.length; t++){
 			for(int x = 0; x < this.timestamps[t].getXLength(); x++){
 				for(int y = 0; y < this.timestamps[t].getYLength(); y++){
 					sumWindDetails.addWindDetails(this.timestamps[t].at(x, y));
-					total += 1;
 				}
 			}
 		}
-		return sumWindDetails.yAdvection/total;
+		return sumWindDetails.yAdvection/layerSize();
 	}
 
 
