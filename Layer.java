@@ -12,8 +12,11 @@ public class Layer{
 	}
 
 	public TimeStamp at(int x){
-			return timestamps[x];
+		return timestamps[x];
+	}
 
+	public TimeStamp[] getTimeStamps(){
+		return timestamps;
 	}
 
 	public int layerLength(){
@@ -24,7 +27,7 @@ public class Layer{
 		return timestamps.length  * timestamps[0].getXLength() * timestamps[0].getYLength();
 	}
 
-	public float getXAverage(){
+	public Vector getAverage(){
 		WindDetails sumWindDetails = new WindDetails(0,0,0);
 
 		for (int t = 0; t < this.timestamps.length; t++){
@@ -34,22 +37,11 @@ public class Layer{
 				}
 			}
 		}
-		return sumWindDetails.xAdvection/layerSize();
+		float xAverage =  sumWindDetails.xAdvection/layerSize();
+		float yAverage =  sumWindDetails.yAdvection/layerSize();
+
+		return new Vector(xAverage, yAverage);
 	}
-
-	public float getYAverage(){
-		WindDetails sumWindDetails = new WindDetails(0,0,0);
-
-		for (int t = 0; t < this.timestamps.length; t++){
-			for(int x = 0; x < this.timestamps[t].getXLength(); x++){
-				for(int y = 0; y < this.timestamps[t].getYLength(); y++){
-					sumWindDetails.addWindDetails(this.timestamps[t].at(x, y));
-				}
-			}
-		}
-		return sumWindDetails.yAdvection/layerSize();
-	}
-
 
 	@Override
 	public String toString(){
