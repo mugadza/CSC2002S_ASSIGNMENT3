@@ -12,23 +12,29 @@ public class CloudCalculator{
 		System.out.println("----------- Creating a layer -----------");
 		Layer cloudLayer = readData(args[0]);
 		
-		
 		System.out.println("----------- Layer was created successfully -----------");
 
 		if(cloudLayer != null){
 			average(cloudLayer);
 		}
 
+		System.gc();
+		double startParallel = System.currentTimeMillis();
+
 		for(int x = 0; x < cloudLayer.layerLength(); x++){
 			cloudLayer.at(x).classifier();
-
 		}
-		System.out.print(cloudLayer.layerLength() );
-		System.out.print(cloudLayer.at(0).getYLength() );
-		System.out.println(cloudLayer.at(0).getXLength() );
 
-		System.out.println(cloudLayer);
-	
+		double endParallel = System.currentTimeMillis();
+		double parallelTime = endParallel - startParallel;
+
+		System.out.println("-------> Cloud Classification Serial Run Time: " + parallelTime + " ms");
+
+		// System.out.print(cloudLayer.layerLength() );
+		// System.out.print(cloudLayer.at(0).getYLength() );
+		// System.out.println(cloudLayer.at(0).getXLength() );
+
+		// System.out.println(cloudLayer);
 	}
 
 	static Layer readData(String fileName){ 
@@ -85,11 +91,18 @@ public class CloudCalculator{
 	}
 
 	static void average(Layer layer){
-		float tempx = layer.getXAverage();
-		System.out.print(String.format("%.6f",tempx));
-		float tempy = layer.getYAverage();
-		System.out.println(String.format(" %.6f",tempy));
+		System.gc();
+		double startParallel = System.currentTimeMillis();
+		
+		Vector averageVector = layer.getAverage();
 
+		System.out.print(String.format("%.6f",averageVector.x()));
+		System.out.println(String.format(" %.6f",averageVector.y()));
+
+		double endParallel = System.currentTimeMillis();
+		double parallelTime = endParallel - startParallel;
+
+		System.out.println("-------> Prevailing Wind Serial Run Time: " + parallelTime + " ms");
 	}
 
 	
